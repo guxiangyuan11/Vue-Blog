@@ -1,0 +1,42 @@
+定义：
+url		300字
+
+
+
+banner_table			推荐文章表
+ID
+title		varchar(32)
+description	varchar(300)
+href		varchar(300)
+
+------------------------------------------------------------------------------
+
+custom_evaluation_table		用户评价表
+ID
+title		varchar(32)
+description	varchar(200)
+src		varchar(300)
+
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+
+article_table			文章表
+ID
+title		varchar(100)
+pic_src		varchar(300)
+pic_big_src	varchar(300)
+summary		varchar(500)
+content		text
+post_time	timestamp
+author		varchar(32)
+n_view		int
+
+
+------------------------------------------------------------------------------
+images_table                   收藏图片表
+ID
+title          varchar（32）
+url            varchar（300）
+userIp         init
+
+

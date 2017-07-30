@@ -1,0 +1,187 @@
+卷 文档 的文件夹 PATH 列表
+卷序列号为 0001-66AE
+G:.
+│  .babelrc
+│  .editorconfig
+│  .eslintignore
+│  .eslintrc.js
+│  .gitignore
+│  .postcssrc.js
+│  index.html
+│  package.json
+│  README.md
+│  tree.txt
+│  
+├─build
+│      build.js
+│      check-versions.js
+│      dev-client.js
+│      dev-server.js
+│      utils.js
+│      vue-loader.conf.js
+│      webpack.base.conf.js
+│      webpack.dev.conf.js
+│      webpack.prod.conf.js
+│      webpack.test.conf.js
+│      
+├─config
+│      dev.env.js
+│      index.js
+│      prod.env.js
+│      test.env.js
+│      
+├─resource
+│  └─image
+│          1_bg.jpg
+│          2_bg.jpg
+│          3_bg.jpg
+│          4_bg.jpg
+│          5_bg.jpg
+│          6_bg.jpg
+│          
+├─src
+│  │  App.vue
+│  │  index.vue
+│  │  main.js
+│  │  
+│  ├─assets
+│  │  │  logo.png
+│  │  │  
+│  │  ├─db
+│  │  │      article.js
+│  │  │      editor.js
+│  │  │      usermession.js
+│  │  │      
+│  │  └─image
+│  │          1_bg.jpg
+│  │          2_bg.jpg
+│  │          3_bg.jpg
+│  │          4_bg.jpg
+│  │          5_bg.jpg
+│  │          6_bg.jpg
+│  │          
+│  ├─common
+│  │  ├─css
+│  │  ├─fonts
+│  │  └─js
+│  │          cookie.js
+│  │          date.js
+│  │          MD5.js
+│  │          Regex.js
+│  │          scrollToTop.js
+│  │          
+│  ├─components
+│  │  │  Hello.vue
+│  │  │  
+│  │  └─base
+│  │      ├─article
+│  │      │      article.vue
+│  │      │      
+│  │      ├─detail
+│  │      │      9.jpg
+│  │      │      bg.jpg
+│  │      │      detail.vue
+│  │      │      
+│  │      ├─editor
+│  │      │      editor.vue
+│  │      │      ownEditor.vue
+│  │      │      
+│  │      ├─home
+│  │      │      home.vue
+│  │      │      
+│  │      ├─image
+│  │      │      1_bg.jpg
+│  │      │      image.vue
+│  │      │      
+│  │      ├─list
+│  │      │      3_bg.jpg
+│  │      │      9.jpg
+│  │      │      list.vue
+│  │      │      loader.gif
+│  │      │      
+│  │      ├─login
+│  │      │      9.jpg
+│  │      │      login.vue
+│  │      │      
+│  │      ├─Reason
+│  │      │      2_bg.jpg
+│  │      │      Reason.vue
+│  │      │      
+│  │      └─wecome
+│  │              wecome.vue
+│  │              
+│  ├─router
+│  │      index.js
+│  │      
+│  └─store
+│          index.js
+│          
+├─static
+│  │  .gitkeep
+│  │  1.jpg
+│  │  2.jpg
+│  │  3.jpg
+│  │  4.jpg
+│  │  5.jpg
+│  │  6.jpg
+│  │  article_bg.jpg
+│  │  home_bg.jpg
+│  │  
+│  └─upload
+│          1011964a772f7839101ad9ba4925a915
+│          532279c2c0eb2a70c81851f8891347d5
+│          80b7914365d263cd2f56e8bbe80e19d3.jpg
+│          85ff420d2d3d546bed0b785c36bc55bd.jpg
+│          
+└─test
+    ├─e2e
+    │  │  nightwatch.conf.js
+    │  │  runner.js
+    │  │  
+    │  ├─custom-assertions
+    │  │      elementCount.js
+    │  │      
+    │  └─specs
+    │          test.js
+    │          
+    └─unit
+        │  .eslintrc
+        │  index.js
+        │  karma.conf.js
+        │  
+        └─specs
+                Hello.spec.js
+                
+├─build
+├─config
+├─resource
+│  └─image
+├─src
+│  ├─assets
+│  │  ├─db
+│  │  └─image
+│  ├─common
+│  │  ├─css
+│  │  ├─fonts
+│  │  └─js
+│  ├─components
+│  │  └─base
+│  │      ├─article
+│  │      ├─detail
+│  │      ├─editor
+│  │      ├─home
+│  │      ├─image
+│  │      ├─list
+│  │      ├─login
+│  │      ├─Reason
+│  │      └─wecome
+│  ├─router
+│  └─store
+├─static
+│  └─upload
+└─test
+    ├─e2e
+    │  ├─custom-assertions
+    │  └─specs
+    └─unit
+        └─specs

@@ -15,7 +15,7 @@
 nodejs + express4 + mysql
 
 ## 关于 后台数据接口 的说明
-需要把sql文件导入到数据库中才能使用，sql文件在\src\assets\db\learn.sql，数据字典有对数据表的解说说明，建议使用nodejs 6.0以上的版本，因为使用了nodejs作为后台，且使用了大量的es6新特性和语法糖
+为了方便我把nodejs的服务器启动直接放在了dev-server.js中，方便开启，需要把sql文件导入到数据库中才能使用，sql文件在\src\assets\db\learn.sql，数据字典有对数据表的解说说明，建议使用nodejs 6.0以上的版本，因为使用了nodejs作为后台，且使用了大量的es6新特性和语法糖
 ***
 # 项目布局
 

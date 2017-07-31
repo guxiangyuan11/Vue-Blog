@@ -26,7 +26,7 @@ nodejs + express4 + mysql
 ├─resource (公共资源)
 │  └─image (公共图片)
 ├─src  
-│  ├─assets (数据库)
+│  ├─assets (数据接口)
 │  │  ├─db  (nodejs数据接口文件)
 │  │  └─image 
 │  ├─common 
@@ -45,7 +45,7 @@ nodejs + express4 + mysql
 │  ├─router (路由)
 │  └─store (vuex store管理)
 ├─static (静态地址)
-│  └─upload
+│  └─upload （post文件接收目录）
 └─test
     ├─e2e(自动化测试)
     │  ├─custom-assertions

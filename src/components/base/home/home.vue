@@ -112,7 +112,6 @@
 
 <style>
   .home-bg{
-    /*background-image: url('../../../../static/home_bg.jpg');*/
     width: 100%;
     height: 100%;
     position: fixed;

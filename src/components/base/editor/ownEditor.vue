@@ -25,7 +25,7 @@
         <span>（最多添加5个标签，多个标签之间用“,”分隔）</span>
       </div>
       <div class="Label">
-        <label>摘要:（最多200个字）<span v-show="descriptions" style="color: red;">已经超出200字!</span></label>
+        <label>摘要:（最多200个字）<span v-show="descriptions" style="color: red;">已经超出200字.!</span></label>
         <textarea v-model="editor_description" class="form-control" rows="3"></textarea>
         <span></span>
       </div>

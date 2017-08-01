@@ -75,7 +75,7 @@
         <div class="form-group">
           <label for="exampleInputFile">上传头像</label>
           <input ref='asd' type="file" id="exampleInputFile" class="avatar"><img class="avatar-img" src="./9.jpg" alt="">
-          <p class="help-block image-help">上传您的头像，尺寸不超过360X360，优化样式如上图</p>
+          <p class="help-block image-help">上传您的头像，尺寸不超过360X360，优化样式如上图!</p>
         </div>
         <button type="button" class="btn btn-primary btn-lg btn-block regBut" @click="sign">注册</button>
         <button type="button" class="btn btn-defaul backBtn" @click="goback" >溜了溜了..</button>

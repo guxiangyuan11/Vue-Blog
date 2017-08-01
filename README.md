@@ -8,7 +8,7 @@
 
 ## 前端技术栈：
 *****
- vue2 + vuex + vue-router + 原生JS + webpack + ES6/7 + axios + flex + animatecss + bootstrap 
+ vue2 + vuex + vue-router + 原生JS + webpack + ES6/7 + axios + flex + animatecss + bootstrap
  ****
 ## 后台技术栈：
 ***
@@ -25,11 +25,11 @@ nodejs + express4 + mysql
 ├─dist   (上线项目文件，放在服务器即可正常访问)
 ├─resource (公共资源)
 │  └─image (公共图片)
-├─src  
+├─src
 │  ├─assets (数据库)
 │  │  ├─db  (nodejs数据接口文件)
-│  │  └─image 
-│  ├─common 
+│  │  └─image
+│  ├─common
 │  │  └─js (公共的方法文件)
 │  ├─components (组件群)
 │  │  └─base
@@ -54,6 +54,9 @@ nodejs + express4 + mysql
         └─specs
 
 ```
+# V 0.1.0
+修复一些BUG和做了一些IE的兼容
+
 # 部分截图：
 ### 进入页面
 <img src='https://raw.githubusercontent.com/guxiangyuan11/IMAGE/master/images/1/%E8%BF%9B%E5%85%A5%E9%A1%B5%E9%9D%A2.jpg'>

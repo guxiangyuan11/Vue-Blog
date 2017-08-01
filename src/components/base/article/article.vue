@@ -87,21 +87,16 @@
     width: 100%;
     height: 100%;
     background-color: rgba(255,255,255,0.4);
-    /*position: fixed;*/
     top:0;
-    /*background-image: url("../../../../static/article_bg.jpg");*/
   }
   .article-text{
     position: absolute;
     display: flex;
-    /*width: 1150px;*/
-    /*height: 574px;*/
     margin: -277px 0 0 -575px;
     top:50%;
     left: 50%;
   }
   .article-text-left{
-    flex: 1;
     width: 520px;
     height: 534px;
     padding: 20px;
@@ -127,7 +122,6 @@
     margin-right: 10px;
   }
   .article-text-right{
-    flex: 1;
     width: 520px;
     height: 534px;
     padding: 20px;

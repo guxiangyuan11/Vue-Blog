@@ -55,7 +55,7 @@ nodejs + express4 + mysql
 
 ```
 # V 0.1.0
-修复一些BUG和做了一些IE的兼容.
+修复一些BUG和做了一些IE的兼容
 
 # 部分截图：
 ### 进入页面

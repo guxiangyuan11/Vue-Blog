@@ -13,7 +13,7 @@
            <router-link :to="{path:banner.href}">
              <h3>{{banner.title}}</h3>
            </router-link>
-           <p>{{banner.description}}...</p>
+           <p>{{banner.description}}....</p>
          </div>
          </div>
      </div>

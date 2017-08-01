@@ -78,7 +78,7 @@
           <p class="help-block image-help">上传您的头像，尺寸不超过360X360，优化样式如上图!</p>
         </div>
         <button type="button" class="btn btn-primary btn-lg btn-block regBut" @click="sign">注册</button>
-        <button type="button" class="btn btn-defaul backBtn" @click="goback" >溜了溜了..</button>
+        <button type="button" class="btn btn-defaul backBtn" @click="goback" >溜了溜了...</button>
       </form>
     </transition>
     <!--注册表单-->

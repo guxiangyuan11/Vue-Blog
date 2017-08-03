@@ -54,6 +54,9 @@ nodejs + express4 + mysql
         └─specs
 
 ```
+# V 0.2.0
+新增了当前文章修改编辑功能
+
 # V 0.1.0
 修复一些BUG和做了一些IE的兼容.
 

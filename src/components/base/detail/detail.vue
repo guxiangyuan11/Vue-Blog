@@ -236,5 +236,6 @@
   }
   .detail-editor-enter,.detail-editor-leave-to{
     opacity:0;
+    transform: translateY(100%);
   }
 </style>

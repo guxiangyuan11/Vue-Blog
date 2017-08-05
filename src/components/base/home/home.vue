@@ -147,7 +147,7 @@
     -webkit-animation-iteration-count: 1;
   }
   .warning-fade-enter-active,.warning-fade-leave-active{
-    transition:all 2.5s;
+    transition:all .3s;
   }
   .warning-fade-enter,.warning-fade-leave-to{
     opacity: 0;

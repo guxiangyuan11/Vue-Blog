@@ -54,7 +54,14 @@ nodejs + express4 + mysql
         └─specs
 
 ```
-# V 0.1.0
+## V 0.2.1
+优化了详情页进入动画和编辑页进入动画，
+把nodejs服务器提出到了 src/assets/db/nodeServer 中方便生产模式下应用，不会影响到开发环境照常使用npm run dev就行了
+
+## V 0.2.0
+新增了当前文章修改编辑功能
+
+## V 0.1.0
 修复一些BUG和做了一些IE的兼容.
 
 # 部分截图：

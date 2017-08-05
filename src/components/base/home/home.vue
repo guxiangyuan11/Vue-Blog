@@ -146,6 +146,7 @@
     -webkit-animation-delay:.2s;
     -webkit-animation-iteration-count: 1;
   }
+
   .warning-fade-enter-active,.warning-fade-leave-active{
     transition:all .3s;
   }

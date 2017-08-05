@@ -234,6 +234,7 @@
     -o-transition: all .8s;
     transition: all .8s;
   }
+
   .detail-editor-enter,.detail-editor-leave-to{
     opacity:0;
     transform: translateY(100%);

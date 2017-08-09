@@ -10,7 +10,7 @@
           <p>{{article.author}}</p>
           <span>发布日期：{{getDate}}</span>
         </div>
-        <button class="btn btn-default button" @click="toEditor">编辑文章</button>
+        <button class="btn btn-default button" @click="toEditor" v-show="isVistor">编辑文章</button>
       </div>
       <!--文章-->
       <div class="detail-article" ref="article">
@@ -46,6 +46,7 @@
   import detailEditor from '../../../components/base/detail/detail_editor.vue';
   import {scrollToTop} from '../../../common/js/scrollToTop';
   import date from '../../../common/js/date';
+  import cookieApi from '../../../common/js/cookie';
   export default{
     data() {
       return {
@@ -56,13 +57,24 @@
         fade: false,
         ID: '',
         show: true,
-        detailEd: false
+        detailEd: false,
+        isVistor: true
       };
     },
     components: {
       detailEditor
     },
     created() {
+      let username = this.$route.params.username;
+      if (username === 'undefined') {
+        cookieApi.delCookie('user');
+        this.$router.push('/');
+      }
+      if (window.localStorage.VISITOR === 'HELLO') {
+        this.isVistor = false;
+      } else {
+        this.isVistor = true;
+      }
       this.ID = this.$route.params.id;
       // 请求文章的数据
       this.axios.get('/home/article/detail?id=' + this.$route.params.id).then((res) => {
@@ -234,7 +246,6 @@
     -o-transition: all .8s;
     transition: all .8s;
   }
-
   .detail-editor-enter,.detail-editor-leave-to{
     opacity:0;
     transform: translateY(100%);

@@ -1,12 +1,12 @@
 <template>
   <div class="home-bg" :style="{position: none, backgroundImage: bgImg}" >
     <div class="box" :style="{zIndex:getzIndex}" v-show="isId">
-      <div class="login-out">
+      <div class="login-out" >
         <!--下拉框-->
-          <button @click="menu = !menu" class="btn btn-default dropdown-toggle btn-xs" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Dropdown
-            <span class="caret"></span>
-          </button>
+        <button @click="menu = !menu" class="btn btn-default dropdown-toggle btn-xs" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" v-show="isVisitor">
+          Dropdown
+          <span class="caret"></span>
+        </button>
         <transition name="menu-fade">
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" v-show="menu">
             <li>
@@ -18,7 +18,7 @@
             <li role="separator" class="divider"></li>
           </ul>
         </transition>
-        欢迎 {{getUsername}} <a @click="clearCookie"> [退出]</a>
+        欢迎 {{getUsername}} <a @click="clearCookie">{{StringName}}</a>
       </div>
       <div class="row">
         <nav class="navbar navbar-inverse">
@@ -26,7 +26,7 @@
           <div class="container-fluid nav-title">
             <div class="navbar-header col-sm-5 ">
               <router-link :to="{path:'/home/'+getUsername}">
-              <a class="navbar-brand icon-glyphicon-fire" :href="'/home/'+getUsername" ><span class="glyphicon glyphicon-fire"></span>Fire</a>
+                <a class="navbar-brand icon-glyphicon-fire" :href="'/home/'+getUsername" ><span class="glyphicon glyphicon-fire"></span>Fire</a>
               </router-link>
             </div>
             <div class="collapse navbar-collapse col-sm-7" id="bs-example-navbar-collapse-6">
@@ -41,12 +41,12 @@
       </div>
     </div>
     <div class="all" @click="menu = false">
-    <transition name="left">
-      <keep-alive>
-        <router-view></router-view>
-      </keep-alive>
-    </transition>
-  </div>
+      <transition name="left">
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
+      </transition>
+    </div>
     <transition name="warning-fade">
       <div class="warning" v-show="isId" >
         <p class="animated fadeInLeft">每天不管是天堂还是地狱</p>
@@ -59,51 +59,68 @@
 <script>
   import cookieApi from '../../../common/js/cookie';
   export default{
-      data () {
-          return {
-              username: '',
-              fade: true,
-              out: false,
-              isId: true,
-              none: 'fixed',
-              bgImg: 'url(../../../../static/home_bg.jpg)',
-              menu: false
-          };
+    data () {
+      return {
+        username: '',
+        fade: true,
+        out: false,
+        isId: true,
+        none: 'fixed',
+        bgImg: 'url(../../../../static/home_bg.jpg)',
+        menu: false,
+        StringName: '[退出]',
+        isVisitor: true
+      };
+    },
+    created() {
+      let username = this.$route.params.username;
+      if (username === 'undefined') {
+        cookieApi.delCookie('user');
+        this.$router.push('/');
+      }
+      if (username === 'visitor') {
+        this.StringName = '[登录]';
+        this.isVisitor = false;
+      } else {
+        this.StringName = '[退出]';
+        this.isVisitor = true;
+      }
+    },
+    computed: {
+      getzIndex() {
+        if (this.$route.params.id) {
+          this.isId = false;
+          this.none = 'absolute';
+          this.bgImg = 'url("")';
+          return 0;
+        } else {
+          this.isId = true;
+          this.none = 'fixed';
+          this.bgImg = 'url(../../../../static/home_bg.jpg)';
+          return 601;
+        }
       },
-      computed: {
-          getzIndex() {
-            if (this.$route.params.id) {
-                this.isId = false;
-                this.none = 'absolute';
-                this.bgImg = 'url("")';
-                return 0;
-            } else {
-              this.isId = true;
-              this.none = 'fixed';
-              this.bgImg = 'url(../../../../static/home_bg.jpg)';
-                return 601;
-            }
-          },
-          getUsername: function () {
-              if (this.fade) {
-                setTimeout(() => {
-                      this.fade = false;
-                  }, 3500);
-              }
-              // 如果页面刷新判断是否有username
-              if (this.$store.state.username) {
-                return this.$store.state.username;
-              } else {
-                  // 如果没有，就在localstorage上取值
-                let username = window.localStorage.USERNAME;
-                this.$store.commit('reciveName', username);
-                return this.$store.state.username;
-              }
-          }
-      },
+      getUsername: function () {
+        if (this.fade) {
+          setTimeout(() => {
+            this.fade = false;
+          }, 3500);
+        }
+        // 如果页面刷新判断是否有username
+        if (this.$store.state.username) {
+          return this.$store.state.username;
+        } else {
+          // 如果没有，就在localstorage上取值
+          let username = window.localStorage.USERNAME;
+          this.$store.commit('reciveName', username);
+          return this.$store.state.username;
+        }
+      }
+    },
     methods: {
       clearCookie() {
         cookieApi.delAllCookie();
+        window.localStorage.clear();
         this.$router.go(0);
       }
     }
@@ -112,6 +129,7 @@
 
 <style>
   .home-bg{
+    /*background-image: url('../../../../static/home_bg.jpg');*/
     width: 100%;
     height: 100%;
     position: fixed;
@@ -134,7 +152,7 @@
     color: #ffffff;
   }
   .home-bg .warning p:nth-child(1){
-     margin-top: 180px;
+    margin-top: 180px;
     -webkit-animation-duration:2s;
     -webkit-animation-delay:.2s;
     -webkit-animation-iteration-count: 1;
@@ -146,9 +164,8 @@
     -webkit-animation-delay:.2s;
     -webkit-animation-iteration-count: 1;
   }
-
   .warning-fade-enter-active,.warning-fade-leave-active{
-    transition:all .3s;
+    transition:all .2s;
   }
   .warning-fade-enter,.warning-fade-leave-to{
     opacity: 0;
@@ -210,7 +227,7 @@
     transition: all 0.5s;
   }
   .left-enter{
-      transform: translateX(100%);
+    transform: translateX(100%);
     opacity:0;
   }
   .left-leave-to{

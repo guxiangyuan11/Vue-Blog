@@ -11,7 +11,6 @@
           <![endif]-->
         </div>
         <span id="helpBlock1" class="col-sm-5 help-block helpText" >{{isUser()}}</span>
-
       </div>
       <div class="form-group " :class="{'has-success':wordSuccess,'has-error':wordError}">
         <label for="inputPassword3"  class="col-sm-5 control-label labelUser">密码:</label>
@@ -24,10 +23,18 @@
         </div>
         <span id="helpBlock2" class="col-sm-5 help-block helpText">{{isPass()}}</span>
       </div>
-      <router-link :to="{path:'/home/'+this.username}">
-        <button type="button" class="btn btn-warning loginBut" :class="{' btn-danger': btnDanger}" @click="loginBlog">登录</button>
-      </router-link>
+      <button type="button" class="btn btn-warning loginBut" :class="{' btn-danger': btnDanger}" @click="loginBlog">
+        <router-link :to="{path:'/home/'+this.username}">
+          登录
+        </router-link>
+      </button>
       <button type="button" class="btn btn-default" @click="goback">注册</button>
+
+      <button type="button" style="margin-left: 20px;" class="btn btn-success loginBut" @click="visitorLogin">
+        <router-link :to="{path:'/home/visitor'}">
+          游客进入
+        </router-link>
+      </button>
     </form>
 
 
@@ -75,10 +82,10 @@
         <div class="form-group">
           <label for="exampleInputFile">上传头像</label>
           <input ref='asd' type="file" id="exampleInputFile" class="avatar"><img class="avatar-img" src="./9.jpg" alt="">
-          <p class="help-block image-help">上传您的头像，尺寸不超过360X360，优化样式如上图!</p>
+          <p class="help-block image-help">上传您的头像，尺寸不超过360X360，优化样式如上图</p>
         </div>
         <button type="button" class="btn btn-primary btn-lg btn-block regBut" @click="sign">注册</button>
-        <button type="button" class="btn btn-defaul backBtn" @click="goback" >溜了溜了...</button>
+        <button type="button" class="btn btn-defaul backBtn" @click="goback" >溜了溜了..</button>
       </form>
     </transition>
     <!--注册表单-->
@@ -226,6 +233,16 @@
           this.wordSuccess = false;
         }
       },
+      // 游客
+      visitorLogin: function () {
+        this.username = 'visitor';
+        this.password = 'er79sd46xc13';
+        window.localStorage.VISITOR = 'HELLO';
+        setTimeout(() => {
+          this.loginBlog();
+          this.$router.go(0);
+        }, 10);
+      },
       // 登录请求
       loginBlog: function () {
         if (this.nameSuccess && this.wordSuccess) {
@@ -237,6 +254,7 @@
             // 这里用localStorage 存储用户名
             window.localStorage.USERNAME = this.originalUser;
             this.$emit('loginBlog', [this.islogin, this.username]);
+            this.$router.go(0);
           }).catch((error) => {
             if (error.response) {
               // The request was made and the server responded with a status code
@@ -271,6 +289,9 @@
   .form-horizontal{
     margin: 0 auto;
   }
+  .form-horizontal{
+
+  }
   .labelUser{
     font-size: 17px;
     font-weight: 500;
@@ -288,6 +309,11 @@
   }
   .loginBut{
     margin-right: 20px;
+  }
+  .loginBut a {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
   }
   .helpText{
     text-align: left;

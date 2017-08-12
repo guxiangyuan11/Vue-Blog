@@ -8,7 +8,7 @@ const article = r => require.ensure([], () => r(require('../components/base/arti
 const detail = r => require.ensure([], () => r(require('../components/base/detail/detail.vue')), 'detail');
 const list = r => require.ensure([], () => r(require('../components/base/list/list.vue')), 'list');
 const editor = r => require.ensure([], () => r(require('../components/base/editor/editor.vue')), 'editor');
-const ErrorHtml = r => require.ensure([], () => r(require('../components/base/404/404.vue')), 'ErrorHtml');
+const ErroHtml = r => require.ensure([], () => r(require('../components/base/404/404.vue')), 'ErrorHtml');
 Vue.use(Router);
 
 export default new Router({
@@ -16,7 +16,7 @@ export default new Router({
   routes: [
     {
       path: '*',
-      component: ErrorHtml
+      component: ErroHtml
     },
     {
       path: '/home/:username',

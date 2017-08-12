@@ -55,7 +55,7 @@ nodejs + express4 + mysql
 
 ```
 ## V 0.4.0
-更新了404页面,用纯CSS3制作
+更新了404页面,用纯CSS3制作.
 
 <img src='https://raw.githubusercontent.com/guxiangyuan11/IMAGE/master/images/1/404%E9%A1%B5%E9%9D%A2.png'>
 

@@ -34,6 +34,7 @@ nodejs + express4 + mysql
 │  │  └─js (公共的方法文件)
 │  ├─components (组件群)
 │  │  └─base
+│  │      ├─404 (404组件)
 │  │      ├─article (文章组件)
 │  │      ├─detail (文章详情组件)
 │  │      ├─editor (文章编辑发布组件)

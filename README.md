@@ -54,6 +54,11 @@ nodejs + express4 + mysql
         └─specs
 
 ```
+## V 0.4.0
+更新了404页面,用纯CSS3制作
+
+<img src='https://raw.githubusercontent.com/guxiangyuan11/IMAGE/master/images/1/404%E9%A1%B5%E9%9D%A2.png'>
+
 ## V 0.3.0
 修复登录按钮BUG和优化了体验，增加了防止恶意操作行为，添加了游客模式，可通过登录页面直接进入，游客模式只能浏览博客文章不能发表文章和编辑文章
 ## V 0.2.1

@@ -73,7 +73,7 @@
       };
     },
     created() {
-      let username = this.$route.params.username;
+      const username = this.$route.params.username;
       if (username === 'undefined') {
         cookieApi.delCookie('user');
         this.$router.push('/');
@@ -100,7 +100,7 @@
           return 601;
         }
       },
-      getUsername: function () {
+      getUsername() {
         if (this.fade) {
           setTimeout(() => {
             this.fade = false;
@@ -111,7 +111,7 @@
           return this.$store.state.username;
         } else {
           // 如果没有，就在localstorage上取值
-          let username = window.localStorage.USERNAME;
+          const username = window.localStorage.USERNAME;
           this.$store.commit('reciveName', username);
           return this.$store.state.username;
         }
@@ -127,9 +127,8 @@
   };
 </script>
 
-<style>
+<style scoped>
   .home-bg{
-    /*background-image: url('../../../../static/home_bg.jpg');*/
     width: 100%;
     height: 100%;
     position: fixed;

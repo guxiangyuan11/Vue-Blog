@@ -2,7 +2,7 @@
   <div class="article" :style="{position: none,backgroundImage: bgImg}">
      <div class="article-text" v-show="isID">
        <div class="article-text-left">
-         <h1>日期{{Years}}</h1>
+         <h1>日期{{totalArticles}}</h1>
          <a @click="gotoList(key)" v-for="(value,key) in years">
            <p>{{key}}年 ({{value}})</p>
          </a>
@@ -47,14 +47,14 @@
         }
     },
     computed: {
-        Years() {
-           for (var i = 0; i < this.banners.length; i++) {
-              if (this.years[this.banners[i].year] !== undefined) {
-                this.years[this.banners[i].year] += 1;
-              } else {
-                this.years[this.banners[i].year] = 1;
-              }
-          }
+      totalArticles() {
+          this.banners.forEach((val) => {
+            if (this.years[val.year] !== undefined) {
+              this.years[val.year] += 1;
+            } else {
+              this.years[val.year] = 1;
+            }
+          });
         },
         isID() {
             if (this.$route.params.id) {
@@ -67,7 +67,7 @@
               return true;
             }
         },
-      getUsername: function () {
+      getUsername() {
         // 如果页面刷新判断是否有username
         if (this.$store.state.username) {
           return this.$store.state.username;

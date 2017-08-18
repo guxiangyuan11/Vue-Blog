@@ -74,7 +74,7 @@
     created() {
     },
     mounted() {
-      // editor 编辑器 简单好用
+      // editor 编辑器
       var editor = new E('#editorElem');
       editor.customConfig.onchange = (html) => {
         this.editorContent = html;
@@ -86,7 +86,7 @@
       editor.create();
       // 请求后台看是否有保存的数据传过来
       this.axios.get('/editor/extra').then((res) => {
-        var response = res.data[0];
+        const response = res.data[0];
         if (res.data.success === 0) {
           return;
         } else {
@@ -111,25 +111,19 @@
         // post请求分别发送至存储文章和banner
         // get请求发送至临时存储删除存储
         this.editor_content = editor.txt.html();
-        var nowDate = date.gettime();
-        var year = date.timeYear().year;
-        var href = '/home/' + this.$route.params.username + '/article/detail/' + this.ID;
+        const nowDate = date.gettime();
+        const year = date.timeYear().year;
+        const href = '/home/' + this.$route.params.username + '/article/detail/' + this.ID;
         if (this.editor_description.length >= 201) {
           this.descriptions = true;
         } else {
           if (this.editor_title && this.editor_original_Reprinted && this.editor_summar && this.editor_content && this.editor_description) {
-            var a = -1;
-            if (this.editor_original_Reprinted === 'oragin') {
-              a = 1;
-              console.log(a);
-            } else {
-              a = 0;
-              console.log(a);
-            }
+            let a = -1;
+            a = this.editor_original_Reprinted === 'oragin' ? 1 : 0;
             // 删除
-            var deleteExtra = this.axios.get('/editor/delete');
+            const deleteExtra = this.axios.get('/editor/delete');
             // 文章
-            var article = this.axios.post('/home/article/add', {
+            const article = this.axios.post('/home/article/add', {
               title: this.editor_title.replace(/'/g, "''").replace(/(^\s*)|(\s*$)/g, ''),
               content: this.editor_content.replace(/'/g, "''"),
               overview: this.editor_overview.replace(/'/g, "''"),
@@ -141,13 +135,13 @@
               post_time: nowDate
             });
             // 最近发布
-            var banners = this.axios.post('/home/article/banner', {
+            const banners = this.axios.post('/home/article/banner', {
               title: this.editor_title.replace(/'/g, "''").replace(/(^\s*)|(\s*$)/g, ''),
               description: this.editor_description.replace(/'/g, "''"),
               author: this.$route.params.username,
               post_time: nowDate,
-              year: year, //
-              href: href
+              year,
+              href
             });
             this.axios.all([deleteExtra, article, banners]).then(this.axios.spread((deleteExtrares, articleres, bannersres) => {
               // 发布成功 这里应该有个成功的弹出框
@@ -162,8 +156,8 @@
       }, false);
       // 立即保存
       document.getElementsByClassName('save')[0].addEventListener('click', () => {
-        var nowDate = date.gettime();
-        var nowTime = date.timeDate(nowDate);
+        const nowDate = date.gettime();
+        const nowTime = date.timeDate(nowDate);
         if (this.editor_title || this.editor_summar || this.editor_content || this.editor_overview || this.editor_description) {
           this.editor_content = editor.txt.html();
           this.editor_title = this.editor_title.replace(/'/g, "''").replace(/(^\s*)|(\s*$)/g, '');

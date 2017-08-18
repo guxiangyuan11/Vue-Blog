@@ -51,6 +51,7 @@
 </template>
 
 <script>
+  /* eslint-disable no-unneeded-ternary */
   import {scrollToTop} from '../../../common/js/scrollToTop';
   import date from '../../../common/js/date';
   export default{
@@ -63,8 +64,8 @@
       };
     },
     created() {
-      var bannerRes = this.axios.get('/home/article?id=' + this.$route.params.id);
-      var avatarRes = this.axios.get('/user/usermessage?name=' + this.$route.params.username);
+      const bannerRes = this.axios.get('/home/article?id=' + this.$route.params.id);
+      const avatarRes = this.axios.get('/user/usermessage?name=' + this.$route.params.username);
       this.axios.all([bannerRes, avatarRes]).then(this.axios.spread((banner, avatar) => {
         // 两个请求现已完成
         this.banners = banner.data;
@@ -78,11 +79,11 @@
       window.addEventListener('scroll', this.menu);
     },
     computed: {
-      avatarUrl: function () {
+      avatarUrl() {
         const URL = '../../../../static/upload/';
         return URL + this.avatar.avatar;
       },
-      getUsername: function () {
+      getUsername() {
         // 如果页面刷新判断是否有username
         if (this.$store.state.username) {
           return this.$store.state.username;
@@ -95,16 +96,12 @@
       }
     },
     methods: {
-      getTime: function (time) {
+      getTime(time) {
         return date.timeDate(time);
       },
       menu() {
         this.scroll = document.body.scrollTop;
-        if (this.scroll >= 300) {
-            this.fade = true;
-        } else {
-          this.fade = false;
-        }
+        this.fade = this.scroll >= 300 ? true : false;
       },
       goTop() {
         scrollToTop(300);
@@ -113,7 +110,7 @@
   };
 </script>
 
-<style>
+<style scoped>
   ::selection {
     background:#FC5185;
     color:#fff;

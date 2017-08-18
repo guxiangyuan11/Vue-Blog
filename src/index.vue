@@ -14,7 +14,6 @@
      <transition name="home-fade">
        <router-view v-show="Login"></router-view>
      </transition>
-    <div>{{user_ok}}</div>
   </div>
 
 </template>
@@ -29,24 +28,25 @@
       };
     },
     mounted() {
+      // 如果登录了的就直接进入主页面
+      this.user_ok();
       // 判断当前有没有cookie，如果有就直接跳转到用户
-      var value = document.cookie.split('=')[1];
+      const value = document.cookie.split('=')[1];
       if (value) {
         this.Login = true;
-        this.$router.push({path: '/home/' + window.localStorage['USERNAME']});
+        const UrlPath = '/home/' + window.localStorage['USERNAME'];
+        this.$router.push({path: UrlPath});
       }
     },
-    computed: {
-        user_ok() {
-          var value = document.cookie.split('=')[1];
-          if (value) {
-            this.Login = true;
-            this.$router.go(1);
-          }
-        }
-    },
     methods: {
-        isLogin: function (data) {
+      user_ok() {
+        const value = document.cookie.split('=')[1];
+        if (value) {
+          this.Login = true;
+          this.$router.go(1);
+        }
+      },
+        isLogin(data) {
         this.Login = data[0];
         this.username = data[1];
       }
@@ -57,7 +57,7 @@
   };
 </script>
 
-<style >
+<style scoped>
   .welcome{
     width: 100%;
     display: inline-block;

@@ -81,7 +81,7 @@
         </div>
         <div class="form-group">
           <label for="exampleInputFile">上传头像</label>
-          <input ref='asd' type="file" id="exampleInputFile" class="avatar"><img class="avatar-img" src="./9.jpg" alt="">
+          <input ref='upAvatar' type="file" id="exampleInputFile" class="avatar"><img class="avatar-img" src="./9.jpg" alt="">
           <p class="help-block image-help">上传您的头像，尺寸不超过360X360，优化样式如上图</p>
         </div>
         <button type="button" class="btn btn-primary btn-lg btn-block regBut" @click="sign">注册</button>
@@ -134,8 +134,8 @@
         this.hiddden = !this.hiddden;
       },
       // 注册判断
-      sign: function () {
-        this.submitImg(this.$refs.asd);
+      sign() {
+        this.submitImg(this.$refs.upAvatar);
         // 判断是否输入为空
         if (this.password2 && this.username) {
           // 判断是否都输入正确了
@@ -144,7 +144,7 @@
             if (this.file) {
               // 判断是否是正确的图片格式
               if (/\.(png|jpg|gif)$/.test(this.file.name)) {
-                var formData = new FormData();
+                const formData = new FormData();
                 this.password2 = MD5.md5(this.password2);
                 this.password = MD5.md5(this.password);
                 formData.append('file', this.file);
@@ -187,7 +187,7 @@
           window.alert('请不要留空');
         }
       },
-      isSame: function () {
+      isSame() {
         if (this.password && this.password2) {
           if (this.password === this.password2) {
             this.wordError2 = false;
@@ -203,7 +203,7 @@
           this.wordSuccess2 = false;
         }
       },
-      isUser: function () {
+      isUser() {
         if (this.username) {
           if (!/^[a-zA-Z\d]\w{3,11}[a-zA-Z\d]$/.test(this.username)) {
             this.nameError = true;
@@ -234,7 +234,7 @@
         }
       },
       // 游客
-      visitorLogin: function () {
+      visitorLogin() {
         this.username = 'visitor';
         this.password = 'er79sd46xc13';
         window.localStorage.VISITOR = 'HELLO';
@@ -244,7 +244,7 @@
         }, 10);
       },
       // 登录请求
-      loginBlog: function () {
+      loginBlog() {
         if (this.nameSuccess && this.wordSuccess) {
           this.originalUser = this.username;
           var MD5password = MD5.md5(this.password);
@@ -259,7 +259,6 @@
             if (error.response) {
               // The request was made and the server responded with a status code
               // that falls out of the range of 2xx
-//                console.log(error.response.data.error);
               this.islogin = false;
               if (error.response.data.error === 1 || error.response.data.error === 2) {
                 window.alert('用户名或者密码错误');
@@ -285,7 +284,7 @@
   };
 </script>
 
-<style>
+<style scoped>
   .form-horizontal{
     margin: 0 auto;
   }

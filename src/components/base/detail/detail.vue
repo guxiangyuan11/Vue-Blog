@@ -43,6 +43,7 @@
 
 <script>
   /* eslint-disable eqeqeq */
+  /* eslint-disable eqeqeq,no-unneeded-ternary */
   import detailEditor from '../../../components/base/detail/detail_editor.vue';
   import {scrollToTop} from '../../../common/js/scrollToTop';
   import date from '../../../common/js/date';
@@ -65,16 +66,12 @@
       detailEditor
     },
     created() {
-      let username = this.$route.params.username;
+      const username = this.$route.params.username;
       if (username === 'undefined') {
         cookieApi.delCookie('user');
         this.$router.push('/');
       }
-      if (window.localStorage.VISITOR === 'HELLO') {
-        this.isVistor = false;
-      } else {
-        this.isVistor = true;
-      }
+      this.isVistor = window.localStorage.VISITOR === 'HELLO' ? false : true;
       this.ID = this.$route.params.id;
       // 请求文章的数据
       this.axios.get('/home/article/detail?id=' + this.$route.params.id).then((res) => {
@@ -105,23 +102,19 @@
       },
       menu() {
         this.scroll = document.body.scrollTop;
-        if (this.scroll >= 300) {
-          this.fade = true;
-        } else {
-          this.fade = false;
-        }
+        this.fade = this.scroll >= 300 ? true : false;
       },
       toEditor() {
         this.show = false;
         this.detailEd = true;
       },
-      getUsername: function () {
+      getUsername() {
         // 如果页面刷新判断是否有username
         if (this.$store.state.username) {
           return this.$store.state.username;
         } else {
           // 如果没有，就在localstorage上取值
-          let username = window.localStorage.USERNAME;
+          const username = window.localStorage.USERNAME;
           this.$store.commit('reciveName', username);
           return this.$store.state.username;
         }
@@ -133,7 +126,7 @@
   };
 </script>
 
-<style>
+<style scoped>
   .detail-article{
     position: relative;
     z-index: 603;

@@ -42,11 +42,7 @@
   };
 </script>
 
-<style>
-  .aaa{
-    position: relative;
-    top:200px;
-  }
+<style scoped>
   .image{
     position: fixed;
     width: 100%;

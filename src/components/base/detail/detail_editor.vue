@@ -65,7 +65,7 @@
     },
     mounted() {
       // editor 编辑器 简单好用
-      var editor = new E('#editorElem');
+      const editor = new E('#editorElem');
       editor.customConfig.onchange = (html) => {
         this.editorContent = html;
       };
@@ -82,11 +82,7 @@
         this.editor_overview = response.overview;
         editor.txt.html(this.editor_content);
         this.editor_description = response.summary;
-        if (response.original_Reprinted === 0) {
-          this.editor_original_Reprinted = 'reprint';
-        } else {
-          this.editor_original_Reprinted = 'oragin';
-        }
+        this.editor_original_Reprinted = response.original_Reprinted === 0 ? 'reprint' : 'oragin';
       }).catch((err) => {
         console.log(err);
       });
@@ -95,21 +91,17 @@
         // 需要发送2个post请求
         // post请求分别发送至存储文章和banner
         this.editor_content = editor.txt.html();
-        var nowDate = date.gettime();
-        var year = date.timeYear().year;
-        var href = '/home/' + this.$route.params.username + '/article/detail/' + this.ID;
+        const nowDate = date.gettime();
+        const year = date.timeYear().year;
+        const href = '/home/' + this.$route.params.username + '/article/detail/' + this.ID;
         if (this.editor_description.length >= 201) {
           this.descriptions = true;
         } else {
           if (this.editor_title && this.editor_original_Reprinted && this.editor_content && this.editor_description) {
-            var a = -1;
-            if (this.editor_original_Reprinted === 'oragin') {
-              a = 1;
-            } else {
-              a = 0;
-            }
+            let a = -1;
+            a = this.editor_original_Reprinted === 'oragin' ? 1 : 0;
             // 文章
-            var article = this.axios.post('/home/article/mod', {
+            const article = this.axios.post('/home/article/mod', {
               title: this.editor_title.replace(/'/g, "''").replace(/(^\s*)|(\s*$)/g, ''),
               content: this.editor_content.replace(/'/g, "''"),
               overview: this.editor_overview.replace(/'/g, "''"),
@@ -122,7 +114,7 @@
               ID: this.ID
             });
             // 最近发布
-            var banners = this.axios.post('/home/article/banner/mod', {
+            const banners = this.axios.post('/home/article/banner/mod', {
               title: this.editor_title.replace(/'/g, "''").replace(/(^\s*)|(\s*$)/g, ''),
               description: this.editor_description.replace(/'/g, "''"),
               author: this.$route.params.username,
@@ -143,7 +135,6 @@
       }, false);
       // 舍弃
       document.getElementsByClassName('btn-danger')[0].addEventListener('click', () => {
-        console.log('a');
         if (this.editor_title || this.editor_content || this.editor_description) {
           if (window.confirm('确定要舍弃已编写文章')) {
             this.$router.go(-1);

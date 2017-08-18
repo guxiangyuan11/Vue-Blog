@@ -33,7 +33,7 @@
 <script>
 </script>
 
-<style>
+<style scoped>
   .reason{
     position: fixed;
     top:0;

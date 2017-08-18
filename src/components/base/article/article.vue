@@ -2,7 +2,7 @@
   <div class="article" :style="{position: none,backgroundImage: bgImg}">
      <div class="article-text" v-show="isID">
        <div class="article-text-left">
-         <h1>日期{{totalArticles}}</h1>
+         <h1>日期{{totalArticles()}}</h1>
          <a @click="gotoList(key)" v-for="(value,key) in years">
            <p>{{key}}年 ({{value}})</p>
          </a>
@@ -42,20 +42,20 @@
         });
     },
     methods: {
+      totalArticles() {
+        this.banners.forEach((val) => {
+          if (this.years[val.year] !== undefined) {
+            this.years[val.year] += 1;
+          } else {
+            this.years[val.year] = 1;
+          }
+        });
+      },
         gotoList(key) {
             this.$router.push({path: '/home/' + this.getUsername + '/article' + '/list/' + key});
         }
     },
     computed: {
-      totalArticles() {
-          this.banners.forEach((val) => {
-            if (this.years[val.year] !== undefined) {
-              this.years[val.year] += 1;
-            } else {
-              this.years[val.year] = 1;
-            }
-          });
-        },
         isID() {
             if (this.$route.params.id) {
                 this.none = '';

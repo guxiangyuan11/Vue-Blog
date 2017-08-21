@@ -42,6 +42,11 @@
         });
     },
     methods: {
+        gotoList(key) {
+            this.$router.push({path: '/home/' + this.getUsername + '/article' + '/list/' + key});
+        }
+    },
+    computed: {
       totalArticles() {
         this.banners.forEach((val) => {
           if (this.years[val.year] !== undefined) {
@@ -51,11 +56,6 @@
           }
         });
       },
-        gotoList(key) {
-            this.$router.push({path: '/home/' + this.getUsername + '/article' + '/list/' + key});
-        }
-    },
-    computed: {
         isID() {
             if (this.$route.params.id) {
                 this.none = '';

@@ -18,7 +18,7 @@
             <li role="separator" class="divider"></li>
           </ul>
         </transition>
-        欢迎 {{getUsername}} <a @click="clearCookie">{{StringName}}</a>
+        欢迎 {{getUsername}} <a class="go-out" @click="clearCookie">{{StringName}}</a>
       </div>
       <div class="row">
         <nav class="navbar navbar-inverse">
@@ -207,7 +207,9 @@
     display: block;
     left:1590px;
     right: 152px;
-
+  }
+  .login-out .go-out{
+    cursor: pointer;
   }
   .navbar-inverse .navbar-nav>li{
     text-align: center;

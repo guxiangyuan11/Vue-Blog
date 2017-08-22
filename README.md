@@ -48,14 +48,8 @@ nodejs + express4 + mysql
 │  └─store (vuex store管理)
 ├─static (静态地址)
 │  └─upload
-└─test
-    ├─e2e(自动化测试)
-    │  ├─custom-assertions
-    │  └─specs
-    └─unit
-        └─specs
-
 ```
+
 ## V 0.4.2
 修复了不是文章作者，却能修改当前文章的BUG
 ## V 0.4.1

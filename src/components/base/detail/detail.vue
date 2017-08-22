@@ -71,7 +71,13 @@
         cookieApi.delCookie('user');
         this.$router.push('/');
       }
-      this.isVistor = window.localStorage.VISITOR === 'HELLO' ? false : true;
+      if (window.localStorage.VISITOR) {
+        this.isVistor = false;
+      } else if (window.localStorage.USERNAME !== this.$route.params.username) {
+        this.isVistor = false;
+      } else {
+        this.isVistor = true;
+      }
       this.ID = this.$route.params.id;
       // 请求文章的数据
       this.axios.get('/home/article/detail?id=' + this.$route.params.id).then((res) => {
